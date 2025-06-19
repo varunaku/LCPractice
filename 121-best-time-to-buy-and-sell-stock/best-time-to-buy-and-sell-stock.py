@@ -15,7 +15,7 @@ class Solution:
         l = 0
         r = 1
         while r < len(prices):
-            print(l,r, mprofit)
+            #print(l,r, mprofit)
             mprofit = max(prices[r] - prices[l], mprofit)
             if prices[l] > prices[r]:
                 l = r
