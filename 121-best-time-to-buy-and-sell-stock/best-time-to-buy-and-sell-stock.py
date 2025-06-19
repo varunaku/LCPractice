@@ -10,8 +10,6 @@ class Solution:
         # return profit
 
         mprofit = 0
-        if len(prices) == 1: 
-            return mprofit
         l = 0
         r = 1
         while r < len(prices):
