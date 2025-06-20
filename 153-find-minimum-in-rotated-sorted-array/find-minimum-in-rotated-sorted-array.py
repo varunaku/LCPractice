@@ -3,7 +3,6 @@ class Solution:
         result = nums[0]
         l = 0
         r = len(nums) - 1
-        [4,5,6,0,1,2,3]
         while l <= r:
             if nums[l] < nums[r]:
                 result = min(nums[l], result)
