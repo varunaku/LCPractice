@@ -23,6 +23,6 @@ class Solution:
                 for i in range(start_bound, end_bound+1):
                     res.add(i)
 
-        return list(res)
+        return sorted(res)
         # best solution. find difference from each key index (j) or +k / -k, and add both to set. 
         # o(n) This way only one iteraiton needed.
