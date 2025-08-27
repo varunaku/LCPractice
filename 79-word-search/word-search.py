@@ -3,44 +3,40 @@ class Solution:
          
         res = False
 
-        def dfs(i, j, curr, visited):
+        def dfs(i, j, curr):
             nonlocal res # res from higher scope
             if res: # if res is true, return.
-                return
+                return True
    
             if len(curr) >= len(word): # if we've exceed word length
-                return 
+                return False
 
             if i >= len(board) or j >= len(board[0]) or j < 0 or i < 0: # if we've exited the bounds of the board
-                return
+                return False
             
             if board[i][j] != word[len(curr)]: 
                 # if the board value is not the same the next letter in word.
                 # eg if curr = "CA", len(curr) is 2, and now word[len(curr)] == "T", and if board[i][j] != "T", it's false
-                return 
+                return False
 
-            if (i, j) in visited:
-                return # mark all visited
-            
-            curr = curr + board[i][j]
-
-            if curr == word:
+            if len(curr) == len(word) - 1:
                 res = True
-                return 
+                return True
+    
+            tmp = board[i][j]       
+            curr_n = curr + board[i][j]    # mar
+            board[i][j] = "#" # mark al
+            
 
-            visited.add((i, j))
+            found = ( dfs(i+1, j, curr_n) or dfs(i-1, j, curr_n) or dfs(i, j+1, curr_n) or dfs(i, j-1, curr_n))
+            board[i][j] = tmp
+            return found
 
-            dfs(i+1, j, curr, visited)
-            dfs(i-1, j, curr, visited)
-            dfs(i, j+1, curr, visited)
-            dfs(i, j-1, curr, visited)
-
-            visited.remove((i, j))  # backtrack
-
+          # backtrack
 
 
         for i in range(len(board)):
             for j in range (len(board[0])):
                 if not res:
-                    dfs(i, j, "", set())
+                    dfs(i, j, "")
         return res
