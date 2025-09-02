@@ -20,7 +20,6 @@ class Solution:
             buckets[val].append(key)
             #key = nums[i] value, val = nums[i] frequency
         # is array sorted? 
-        print(buckets)
 
         for i in range(len(nums), -1, -1):
             bucket = len(buckets[i])
